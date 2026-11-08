@@ -47,9 +47,10 @@ def check_free_email(text):
 
 
 def check_messaging_only(text):
-    for app in ("whatsapp", "telegram"):
-        if app in text:
-            return 20, f"Asks you to contact them on {app.capitalize()}"
+    names = {"whatsapp": "WhatsApp", "telegram": "Telegram"}
+    for key, label in names.items():
+        if key in text:
+            return 20, f"Asks you to contact them on {label}"
     return 0, None
 
 
