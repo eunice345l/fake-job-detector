@@ -28,9 +28,15 @@ EARNINGS_PATTERN = re.compile(
 
 def check_asks_for_money(text):
     for phrase in MONEY_PHRASES:
-        if phrase in text:
-            return 40, f"Asks for money ('{phrase}')"
+        position = text.find(phrase)
+        if position == -1:
+            continue
+        before = text[max(0, position - 12):position]
+        if "no " in before or "without " in before:
+            continue
+        return 40, f"Asks for money ('{phrase}')"
     return 0, None
+
 
 
 def check_free_email(text):
