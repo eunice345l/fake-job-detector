@@ -3,5 +3,4 @@ __pycache__/
 *.pyc
 .env
 data/*.csv
-*.joblib
 .pytest_cache/
