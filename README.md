@@ -265,3 +265,6 @@ docker run -p 8000:8000 fake-job-detector
 ```
 
 Then open http://127.0.0.1:8000. The image is about 162MB.
+
+
+==>Live demo: https://fake-job-detector-vise.onrender.com (free hosting, so the first load after idle can take about a minute)
