@@ -256,3 +256,12 @@ real recruiters and scammers write them. Two of them exposed problems:
 These were found by testing a handful of examples, not a proper evaluation, so the
 cut-off and the rule weights are still hand-picked and could be tuned better with
 a larger set of labelled real-world messages.
+
+## Run with Docker
+
+```bash
+docker build -t fake-job-detector .
+docker run -p 8000:8000 fake-job-detector
+```
+
+Then open http://127.0.0.1:8000. The image is about 162MB.
