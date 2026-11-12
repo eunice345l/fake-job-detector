@@ -232,3 +232,27 @@ Dataset: "Real / Fake Job Posting Prediction" on Kaggle, from the University of
 
 the Aegean. The data file is not included in this repository.
 
+
+## What testing real-looking messages showed
+
+After the first version worked on my test set, I tried messages written the way
+real recruiters and scammers write them. Two of them exposed problems:
+
+- **The earnings rule missed "daily".** A message saying "Earn Rs 2,000 daily by
+  rating products from home" did not trigger the rule, because the rule only
+  matched "per day" and "per week". The model still marked the message high risk
+  (score 74/100), so the problem was hidden until I looked at which reasons were
+  shown. I widened the rule to match "daily" and "weekly" and added a test for it.
+- **A genuine post was marked high risk.** A short post from a small company, which
+  used a Gmail address and the word "urgent" but said "no registration fee",
+  scored 57/100 and was marked HIGH. The fee rule behaved correctly, but a free
+  email address and urgent wording together added enough points to cross the
+  cut-off, and the model was only 56% sure. I raised the HIGH cut-off from 50 to
+  60, so this message now shows as medium, and added it as a test case.
+- **Short messages are the model's weak spot.** The model was trained on long job
+  postings, so its confidence on a short message is less reliable. For short
+  texts, the rule-based reasons are the more trustworthy part of the result.
+
+These were found by testing a handful of examples, not a proper evaluation, so the
+cut-off and the rule weights are still hand-picked and could be tuned better with
+a larger set of labelled real-world messages.
