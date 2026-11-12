@@ -22,8 +22,9 @@ TOO_GOOD_PHRASES = [
 ]
 
 EARNINGS_PATTERN = re.compile(
-    r"earn\s+(up to\s+)?(rs\.?|inr|₹)?\s*[\d,]{4,}\s*(per|/|a)\s*(day|week)"
+    r"earn\s+(up to\s+)?(rs\.?|inr|₹)?\s*[\d,]{4,}\s*(per|/|a)?\s*(day|week|daily|weekly)"
 )
+
 
 
 def check_asks_for_money(text):

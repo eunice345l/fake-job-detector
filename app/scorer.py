@@ -21,7 +21,7 @@ def load_model():
 def level_from_score(score):
     if score < 20:
         return "low"
-    if score < 50:
+    if score < 60:
         return "medium"
     return "high"
 

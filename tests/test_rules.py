@@ -54,3 +54,7 @@ def test_empty_text_is_safe():
 def test_harmless_mention_of_fee_is_not_flagged():
     result = analyze_text("There is no application fee. Applying is completely free.")
     assert result["score"] == 0
+
+def test_daily_earnings_promise_is_flagged():
+    result = analyze_text("Earn Rs 2,000 daily by rating products from home")
+    assert result["score"] == 20
